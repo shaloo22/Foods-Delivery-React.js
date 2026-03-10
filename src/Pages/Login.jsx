@@ -12,7 +12,7 @@ const Login = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await API.post('users/login', { email, password });
+            const { data } = await API.post('/users/login', { email, password });
             localStorage.setItem('user', JSON.stringify(data));
             toast.success('LoggedIn Successfully!');
             if (data.role === 'admin') {
@@ -27,7 +27,7 @@ const Login = () => {
 
     const handleGuestAdmin = async () => {
         try {
-            const { data } = await API.post('users/login', { email: 'admin@example.com', password: 'password123' });
+            const { data } = await API.post('/users/login', { email: 'admin@example.com', password: 'password123' });
             localStorage.setItem('user', JSON.stringify(data));
             toast.success('Admin LoggedIn!');
             navigate('/admin');
