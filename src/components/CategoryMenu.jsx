@@ -22,30 +22,32 @@ const CategoryMenu = () => {
   const selectedCategory = useSelector((state) => state.category.category);
 
   return (
-    <div className="ml-6">
-      <h3 className="text-xl font-semibold">Find the best food</h3>
-      <div className="my-5 flex gap-3 overflow-x-scroll scroll-smooth lg:overflow-x-hidden">
+    <div className="px-4 sm:px-6">
+      <h3 className="text-lg sm:text-xl font-semibold mb-3">Find the best food</h3>
+      <div className="flex gap-2 sm:gap-3 overflow-x-auto pb-2 scroll-smooth" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
         <button
           onClick={() => dispatch(setCategory("All"))}
-          className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-orange-600 hover:text-white ${
-            selectedCategory === "All" && "bg-orange-500 text-white"
-          }`}
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold rounded-xl whitespace-nowrap text-sm transition-all flex-shrink-0
+            ${selectedCategory === "All"
+              ? "bg-orange-500 text-white shadow-md shadow-orange-200"
+              : "bg-gray-100 text-gray-600 hover:bg-orange-100 hover:text-orange-600"
+            }`}
         >
           All
         </button>
-        {categories.map((category, index) => {
-          return (
-            <button
-              onClick={() => dispatch(setCategory(category))}
-              key={index}
-              className={`px-3 py-2 bg-gray-200 font-bold rounded-lg hover:bg-orange-600 hover:text-white ${
-                selectedCategory === category && "bg-orange-500 text-white"
-              } `}
-            >
-              {category}
-            </button>
-          );
-        })}
+        {categories.map((category, index) => (
+          <button
+            onClick={() => dispatch(setCategory(category))}
+            key={index}
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 font-bold rounded-xl whitespace-nowrap text-sm transition-all flex-shrink-0
+              ${selectedCategory === category
+                ? "bg-orange-500 text-white shadow-md shadow-orange-200"
+                : "bg-gray-100 text-gray-600 hover:bg-orange-100 hover:text-orange-600"
+              }`}
+          >
+            {category}
+          </button>
+        ))}
       </div>
     </div>
   );
