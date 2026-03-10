@@ -1,11 +1,9 @@
 import axios from 'axios';
 
 const API = axios.create({
-    baseURL: 'https://foods-delivery-react-js.onrender.com',
+    baseURL: 'https://foods-delivery-react-js.onrender.com/api',
 });
 
-
-// Automatically add token to headers
 API.interceptors.request.use((req) => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (user?.token) {
@@ -14,12 +12,10 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-// Global error handling for 401 Unauthorized
 API.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response && error.response.status === 401) {
-            // Token expired or not authorized -> clear storage and redirect
             localStorage.removeItem('user');
             window.location.href = '/login';
         }
