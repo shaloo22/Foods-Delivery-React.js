@@ -12,7 +12,6 @@ const FoodModal = ({ food, onClose, handleToast }) => {
 
     if (!food) return null;
 
-    // Find suggested items based on the suggestions IDs in FoodData
     const suggestedItems = food.suggestions
         ? FoodData.filter(item => food.suggestions.includes(item.id))
         : [];

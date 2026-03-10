@@ -28,8 +28,7 @@ const ChatBot = () => {
         setLoading(true);
 
         try {
-            // Prepare history for API (Gemini format)
-            // Note: Gemini uses 'user' and 'model' roles
+
             const history = messages.map(msg => ({
                 role: msg.role,
                 parts: [{ text: msg.text }]
@@ -40,7 +39,7 @@ const ChatBot = () => {
                 user = JSON.parse(localStorage.getItem('user'));
             } catch (e) { }
 
-            const { data } = await API.post('chat', {
+            const { data } = await API.post('/chat', {
                 message: input,
                 history: history,
                 role: user?.role || 'user'
