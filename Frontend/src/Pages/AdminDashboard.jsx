@@ -209,7 +209,7 @@ const AdminDashboard = () => {
                             </div>
 
                             {showNotifications && (
-                                <div className="absolute right-[-20px] sm:right-0 top-12 w-[88vw] sm:w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
+                                <div className="absolute right-[-10px] sm:right-0 top-full mt-3 w-[calc(100vw-40px)] max-w-[340px] bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
                                     <div className="p-3 sm:p-4 bg-pink-50 border-b border-pink-100">
                                         <h3 className="font-bold text-gray-800 text-xs sm:text-sm">🔔 Action Required</h3>
                                         <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Pending orders waiting to be prepared</p>
