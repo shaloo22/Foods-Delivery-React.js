@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
 const getChatResponse = async (req, res) => {
     const { message, history, role } = req.body;
 
@@ -12,16 +14,6 @@ const getChatResponse = async (req, res) => {
     }
 
     try {
-        // Initialize AI inside the handler to ensure env is loaded
-        const apiKey = process.env.GEMINI_API_KEY;
-        if (!apiKey) {
-            console.error("CRITICAL: GEMINI_API_KEY is missing!");
-            return res.status(500).json({ message: "Server Configuration Error: API Key missing." });
-        }
-
-        console.log(`Using API Key starting with: ${apiKey.substring(0, 7)}...`);
-        const genAI = new GoogleGenerativeAI(apiKey);
-
         const isAdmin = role === 'admin';
 
         const systemInstruction = isAdmin
