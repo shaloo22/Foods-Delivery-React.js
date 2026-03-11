@@ -10,6 +10,15 @@ import Error from "./Pages/Error";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ChatBot from "./components/ChatBot";
 import { Toaster } from "react-hot-toast";
+import { useLocation } from "react-router-dom";
+
+// Helper component to conditionally show the chatbot
+const ConditionalChatBot = () => {
+  const location = useLocation();
+  // Hide chatbot on login page
+  if (location.pathname === "/login") return null;
+  return <ChatBot />;
+};
 
 const App = () => {
   return (
@@ -25,7 +34,7 @@ const App = () => {
         <Route path="/my-orders" element={<MyOrders />} />
         <Route path="/*" element={<Error />} />
       </Routes>
-      <ChatBot />
+      <ConditionalChatBot />
       <Toaster position="top-center" reverseOrder={false} />
     </BrowserRouter>
   );
