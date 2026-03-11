@@ -5,8 +5,8 @@ import API from '../api';
 import toast from 'react-hot-toast';
 
 const Login = () => {
-    const [email, setEmail] = useState('user@example.com');
-    const [password, setPassword] = useState('password123');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
