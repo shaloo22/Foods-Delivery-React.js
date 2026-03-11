@@ -210,16 +210,6 @@ const Navbar = () => {
                             )}
                         </div>
 
-                        {/* Admin Dashboard — only for admins */}
-                        {user?.role === 'admin' && (
-                            <button
-                                onClick={() => navigate("/admin")}
-                                className="hidden lg:flex items-center gap-1.5 px-4 py-2.5 bg-pink-100 text-pink-600 font-bold rounded-2xl hover:bg-pink-500 hover:text-white transition-all border border-pink-200 text-sm whitespace-nowrap animate-pulse"
-                            >
-                                Admin Panel
-                            </button>
-                        )}
-
                         {/* My Orders — desktop only */}
                         <button
                             onClick={() => navigate("/my-orders")}
@@ -235,7 +225,7 @@ const Navbar = () => {
                                     onClick={() => setShowLogout(!showLogout)}
                                     className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 text-gray-700 font-bold rounded-2xl hover:bg-gray-200 transition-all border border-gray-200 text-sm whitespace-nowrap"
                                 >
-                                    <FaUser size={12} /> {user.name?.split(' ')[0] || "User"}
+                                    <FaUser size={12} /> {user.role === 'admin' ? "Admin" : (user.name?.split(' ')[0] || "User")}
                                 </button>
                                 {showLogout && (
                                     <button
