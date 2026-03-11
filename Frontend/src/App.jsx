@@ -21,17 +21,19 @@ const ConditionalChatBot = () => {
 };
 
 const App = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/success"
           element={<ProtectedRoute element={<Success />} />}
         />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/admin" element={user?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/login" />} />
+        <Route path="/my-orders" element={user ? <MyOrders /> : <Navigate to="/login" />} />
         <Route path="/*" element={<Error />} />
       </Routes>
       <ConditionalChatBot />

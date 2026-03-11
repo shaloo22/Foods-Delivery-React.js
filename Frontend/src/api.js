@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const API = axios.create({
     baseURL: 'https://foods-delivery-react-js.onrender.com/api',
+    // baseURL: 'http://localhost:5000/api'
 });
 
 API.interceptors.request.use((req) => {
