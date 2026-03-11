@@ -56,7 +56,6 @@ const getChatResponse = async (req, res) => {
                 - Tone: Friendly and conversational.
             `;
 
-        console.log("Using AI Model: gemini-1.5-flash"); // Log to verify server update
         const model = genAI.getGenerativeModel({
             model: "gemini-1.5-flash",
             systemInstruction: systemInstruction,
