@@ -195,6 +195,13 @@ const AdminDashboard = () => {
                         <p className="text-gray-400 text-[10px] sm:text-sm font-medium">Real-time business insights</p>
                     </div>
                     <div className="flex items-center gap-2 sm:gap-4">
+                        <button
+                            onClick={handleLogout}
+                            className="px-4 py-2 bg-gray-900 text-white text-xs sm:text-sm font-bold rounded-xl sm:rounded-2xl hover:bg-black transition-all shadow-md active:scale-95"
+                        >
+                            Logout
+                        </button>
+
                         <div className="relative" ref={notifRef}>
                             <div
                                 onClick={() => setShowNotifications(!showNotifications)}
@@ -209,7 +216,7 @@ const AdminDashboard = () => {
                             </div>
 
                             {showNotifications && (
-                                <div className="absolute right-[-10px] sm:right-0 top-12 w-[88vw] max-w-[320px] sm:w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
+                                <div className="fixed sm:absolute left-4 right-4 sm:left-auto sm:right-0 top-20 sm:top-12 sm:w-80 bg-white rounded-2xl shadow-2xl border border-gray-100 z-50 overflow-hidden">
                                     <div className="p-3 sm:p-4 bg-pink-50 border-b border-pink-100">
                                         <h3 className="font-bold text-gray-800 text-xs sm:text-sm">🔔 Action Required</h3>
                                         <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Pending orders waiting to be prepared</p>
@@ -239,12 +246,6 @@ const AdminDashboard = () => {
                                 </div>
                             )}
                         </div>
-                        <button
-                            onClick={handleLogout}
-                            className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gray-900 text-white text-sm font-bold rounded-2xl hover:bg-black transition-all shadow-lg active:scale-95"
-                        >
-                            Logout
-                        </button>
                     </div>
                 </div>
 
